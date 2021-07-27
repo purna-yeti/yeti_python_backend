@@ -5,6 +5,7 @@
 clean:
 	find . -type f -name '*.pyc' -delete
 	find . -type f -name '*.log' -delete
+	find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
 
 install:
 	virtualenv venv; \

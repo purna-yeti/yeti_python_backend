@@ -3,6 +3,7 @@ from flask import Blueprint
 
 from .main.controller.user_controller import api as user_ns
 from .main.controller.auth_controller import api as auth_ns
+from .main.controller.content_parser_controller import api as content_parser_ns
 
 blueprint = Blueprint('api', __name__)
 authorizations = {
@@ -23,4 +24,5 @@ api = Api(
 )
 
 api.add_namespace(user_ns, path='/user')
+api.add_namespace(content_parser_ns, path='/content_parser')
 api.add_namespace(auth_ns)
