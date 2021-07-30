@@ -1,5 +1,6 @@
 app/main/config.py
 credentials/*
+migrations/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
