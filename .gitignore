@@ -1,4 +1,5 @@
 app/main/config.py
+credentials/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

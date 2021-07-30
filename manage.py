@@ -6,9 +6,9 @@ from flask_script import Manager
 
 from app import blueprint
 from app.main import create_app, db
-from app.main.model import user, blacklist
+from app.main.model import reddit_query, reddit_stat
 
-app = create_app(os.getenv('BOILERPLATE_ENV') or 'dev')
+app = create_app(os.getenv('ENV') or 'local')
 app.register_blueprint(blueprint)
 
 app.app_context().push()
@@ -24,7 +24,10 @@ manager.add_command('db', MigrateCommand)
 def run():
     app.run()
 
-
+@manager.command
+def db_restart():
+    os.system('rm -rf migrations; python manage.py db init; python manage.py db migrate; python manage.py db upgrade')
+    
 @manager.command
 def test():
     """Runs the unit tests."""
