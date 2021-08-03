@@ -28,6 +28,9 @@ class RedditQueryDto:
         'query': fields.String(required=True),
         'before': fields.DateTime(required=True),
     })
+    message = api.model('message', {
+        'message': fields.String(required=True)
+    })
 
 class RedditStatDto:
     api = Namespace('reddit_stat', description='reddit_stat related operations')
