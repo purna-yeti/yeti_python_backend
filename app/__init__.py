@@ -32,4 +32,4 @@ api = Api(
 # api.add_namespace(auth_ns)
 
 api.add_namespace(reddit_query_ns, path='/reddit_query')
-api.add_namespace(reddit_stat_ns, path='/reddit_path')
+api.add_namespace(reddit_stat_ns, path='/reddit_stat')

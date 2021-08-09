@@ -20,7 +20,7 @@ class RedditQueryResource(Resource):
   @api.response(201, 'Reddit Query created')
   @api.doc('Creating new reddit query by query and before')
   def post(self):
-    """ Respond reddit query event """
+    """ Create reddit query """
     return save_new_reddit_query(request.json)
 
   def get(self):
@@ -30,12 +30,13 @@ class RedditQueryResource(Resource):
 class Pubsub(Resource):
   @api.expect(message, validate=False)
   @api.response(201, 'Reddit Query pubsub responded')
-  @api.doc('Reddit query pubsub handler')
+  @api.doc('Pubsub receiver for reddit query')
   def post(self):
-    """ Respond reddit query event """
+    """ Pubsub receiver for reddit query """
     # 1. create new reddit query
     # 2. send the next pubsub by moving back the reddit query by a month prior, check if its earlier than EARLIEST 
-    return handle_reddit_query_pubsub(request.json['message'])
+    # 3. send resp to calculate reddit stat
+    return handle_reddit_query_pubsub(request.json)
 
 
 @api.route('/old')

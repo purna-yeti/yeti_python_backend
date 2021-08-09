@@ -34,5 +34,17 @@ class RedditQueryDto:
 
 class RedditStatDto:
     api = Namespace('reddit_stat', description='reddit_stat related operations')
-
-    
+    message = api.model('message', {
+        'message': fields.String(required=True)
+    })
+    search_params = api.model('search_params', {
+        'query': fields.String(required=True),
+    }) 
+    reddit_stat = api.model('reddit_stat', {
+        'id': fields.Integer,
+        'uuid': fields.String,
+        'created_at': fields.DateTime,
+        'updated_at': fields.DateTime,
+        'query_': fields.String,
+        'stat': fields.Raw
+    })

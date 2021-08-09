@@ -7,6 +7,7 @@ class RedditStat(db.Model):
     """
     Token Model for storing JWT tokens
     """
+    __bind_key__ = 'yeti-python-backend'
     __tablename__ = 'reddit_stat'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
